@@ -1,29 +1,35 @@
-
 #include "applicationui.hpp"
 
-#include <bb/cascades/AbstractPane>
 #include <bb/cascades/Application>
 #include <bb/cascades/QmlDocument>
+#include <bb/cascades/AbstractPane>
+#include <bb/cascades/LocaleHandler>
 
-#include "AZRUI/OGauge.h"
+#include "AZRUI/OGauge/OGauge.h"
+
+using namespace AZRUI;
 
 using namespace bb::cascades;
-using namespace AZRUI;
 
 ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
         QObject(app)
 {
     // prepare the localization
-    m_pTranslator = new QTranslator(this);
 
+	qmlRegisterType<AZRUI::OGauge>("AZRUI", 1, 0, "OGauge");
+    m_pTranslator = new QTranslator(this);
+    m_pLocaleHandler = new LocaleHandler(this);
+    if(!QObject::connect(m_pLocaleHandler, SIGNAL(systemLanguageChanged()), this, SLOT(onSystemLanguageChanged()))) {
+        // This is an abnormal situation! Something went wrong!
+        // Add own code to recover here
+        qWarning() << "Recovering from a failed connect()";
+    }
     // initial load
     onSystemLanguageChanged();
-    qmlRegisterType<AZRUI::OGauge>("AZRUI", 1, 0, "OGauge");
+
     // Create scene document from main.qml asset, the parent is set
     // to ensure the document gets destroyed properly at shut down.
     QmlDocument *qml = QmlDocument::create("asset:///main.qml").parent(this);
-
-    qml->setContextProperty("_azrui", this);
     // Create root object for the UI
     AbstractPane *root = qml->createRootObject<AbstractPane>();
 
@@ -36,7 +42,7 @@ void ApplicationUI::onSystemLanguageChanged()
     QCoreApplication::instance()->removeTranslator(m_pTranslator);
     // Initiate, load and install the application translation files.
     QString locale_string = QLocale().name();
-    QString file_name = QString("AZR_CJauge_%1").arg(locale_string);
+    QString file_name = QString("AZRUI_test_%1").arg(locale_string);
     if (m_pTranslator->load(file_name, "app/native/qm")) {
         QCoreApplication::instance()->installTranslator(m_pTranslator);
     }

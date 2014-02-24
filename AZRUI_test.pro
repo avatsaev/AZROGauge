@@ -1,8 +1,5 @@
-APP_NAME = AZR_O_Gauge
+APP_NAME = AZRUI_test
 
 CONFIG += qt warn_on cascades10
-
-LIBS += -lbb
-
-
+LIBS+= -lbb
 include(config.pri)

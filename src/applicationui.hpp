@@ -1,9 +1,6 @@
 #ifndef ApplicationUI_HPP_
 #define ApplicationUI_HPP_
-
 #include <QObject>
-#include <bb/cascades/Image>
-#include "AZRUI/OGauge.h"
 
 namespace bb
 {
@@ -16,25 +13,23 @@ namespace bb
 
 class QTranslator;
 
-class ApplicationUI : public QObject{
-	Q_OBJECT
+/*!
+ * @brief Application object
+ *
+ *
+ */
 
-
+class ApplicationUI : public QObject
+{
+    Q_OBJECT
 public:
     ApplicationUI(bb::cascades::Application *app);
     virtual ~ApplicationUI() { }
-
 private slots:
     void onSystemLanguageChanged();
-
-
-
 private:
     QTranslator* m_pTranslator;
     bb::cascades::LocaleHandler* m_pLocaleHandler;
-
-
-
 };
 
 #endif /* ApplicationUI_HPP_ */

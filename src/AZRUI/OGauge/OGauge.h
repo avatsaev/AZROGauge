@@ -31,9 +31,11 @@ namespace AZRUI{
 			Q_PROPERTY(bb::cascades::Image image READ image NOTIFY imageChanged)
 			Q_PROPERTY(QString color READ color WRITE setColor NOTIFY colorChanged)
 			Q_PROPERTY(QUrl foreground READ foregroundUrl WRITE setForegroundUrl NOTIFY foregroundUrlChanged)
+			Q_PROPERTY(bool labelVisible READ labelVisible WRITE setLabelVisible NOTIFY labelVisibleChanged)
+
 
 		public:
-			OGauge(int value = 0, QString color = "#FF0000");
+			OGauge(int value = 0, QString color = "#FF0000", bool labelVisible = true);
 			virtual ~OGauge() { }
 
 
@@ -42,6 +44,7 @@ namespace AZRUI{
 			void imageChanged();
 			void colorChanged();
 			void foregroundUrlChanged();
+			void labelVisibleChanged();
 
 		private:
 			//data
@@ -54,10 +57,12 @@ namespace AZRUI{
 			ImageView* m_foreground;
 			QUrl m_foregroundUrl;
 			Label* m_label;
+			bool m_labelVisible;
 
 		private:
 			float value();
 			QString color();
+			bool labelVisible();
 			QUrl foregroundUrl();
 			bb::cascades::Image image() const;
 
@@ -68,6 +73,7 @@ namespace AZRUI{
 			void setValue(float value);
 			void setColor(QString);
 			void setForegroundUrl(QUrl url);
+			void setLabelVisible(bool visible);
 	};
 
 }

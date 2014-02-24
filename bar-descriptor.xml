@@ -26,11 +26,12 @@
 
     <!-- A universally unique application identifier. Must be unique across all BlackBerry 10 applications.
          Using a reverse DNS-style name as the id is recommended. (Eg. com.example.ExampleApplication.) Required. -->
-    <id>com.example.AZR_O_Gauge</id>
+    <id>com.example.AZRUI_test</id>
 
     <!-- The name that is displayed in the BlackBerry 10 application installer. 
          May have multiple values for each language. See samples or xsd schema file. Optional. -->
-    <name>AZR_O_Gauge</name>
+    <name>AZRUI_test</name>
+    <cascadesTheme>Dark</cascadesTheme>
     
     <!-- A string value of the format <0-999>.<0-999>.<0-999> that represents application version which can be used to check for application upgrade. 
          Values can also be 1-part or 2-part. It is not necessary to have a 3-part value.
@@ -39,36 +40,37 @@
 
     <!-- Fourth digit segment of the package version. First three segments are taken from the 
          <versionNumber> element.  Must be an integer from 0 to 2^16-1 -->
-    <buildId>1</buildId>
+    <buildId>2</buildId>
                  
     <!-- A string value (such as "v1", "2.5", or "Alpha 1") that represents the version of the application, as it should be shown to users. Optional. -->
     <!-- <versionLabel></versionLabel> -->
 
     <!-- Description, displayed in the BlackBerry 10 application installer.
          May have multiple values for each language. See samples or xsd schema file. Optional. -->
-    <description>The AZR_O_Gauge application</description>
+    <description>The AZRUI_test application</description>
 
     <!-- Copyright information. Optional. -->
     <!-- <copyright></copyright> -->
 
     <!--  Name of author which is used for signing. Must match the developer name of your development certificate. -->
-    <author>Example Inc.</author>
+    <author>Vatsaev Aslan</author>
+    <authorId>gYAAgPFIGhQOqTky1gnFVX6sJ2E</authorId>
     <configuration name="Device-Debug">
        <platformArchitecture>armle-v7</platformArchitecture>
-       <asset path="arm/o.le-v7-g/AZR_O_Gauge" entry="true" type="Qnx/Elf">AZR_O_Gauge</asset>
+       <asset path="arm/o.le-v7-g/AZRUI_test" entry="true" type="Qnx/Elf">AZRUI_test</asset>
     </configuration>
     <configuration name="Device-Release">
        <entryPointType>Qnx/Cascades</entryPointType>
        <platformArchitecture>armle-v7</platformArchitecture>
-       <asset path="arm/o.le-v7/AZR_O_Gauge.so" entry="true" type="Qnx/Elf">AZR_O_Gauge.so</asset>
+       <asset path="arm/o.le-v7/AZRUI_test.so" entry="true" type="Qnx/Elf">AZRUI_test.so</asset>
     </configuration>
     <configuration name="Device-Profile">
        <platformArchitecture>armle-v7</platformArchitecture>
-       <asset path="arm-p/o.le-v7-g/AZR_O_Gauge" entry="true" type="Qnx/Elf">AZR_O_Gauge</asset>
+       <asset path="arm-p/o.le-v7-g/AZRUI_test" entry="true" type="Qnx/Elf">AZRUI_test</asset>
     </configuration>
     <configuration name="Simulator-Debug">
        <platformArchitecture>x86</platformArchitecture>
-       <asset path="x86/o-g/AZR_O_Gauge" entry="true" type="Qnx/Elf">AZR_O_Gauge</asset>
+       <asset path="x86/o-g/AZRUI_test" entry="true" type="Qnx/Elf">AZRUI_test</asset>
     </configuration>
     
     <!--  Unique author ID assigned by signing authority. Required if using debug tokens. -->

@@ -1,4 +1,4 @@
-QMAKE_TARGET  = AZR_O_Gauge
+QMAKE_TARGET  = AZRUI_test
 LUPDATE       = $(QNX_HOST)/usr/bin/lupdate
 LRELEASE      = $(QNX_HOST)/usr/bin/lrelease
 
